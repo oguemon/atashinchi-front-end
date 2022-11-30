@@ -1,0 +1,15 @@
+.character-profile{
+    padding: 30px 0;
+    background-color: lighten($color-main, 38%);
+
+    h1 {
+        font-size: 250%;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .description {
+        max-width: 480px;
+        margin: 20px auto 0;
+    }
+}

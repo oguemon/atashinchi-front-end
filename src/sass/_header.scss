@@ -1,0 +1,40 @@
+/*
+ *  ヘッダー類
+ */
+
+header {
+	height: 75px;
+	text-align: center;
+	color: $color-font-white;
+	background: $color-main;
+
+	@include mq() {
+		height: 60px;
+	}
+
+	.logo-wrapper {
+		width: 250px;
+		height: 75px;
+		display: block;
+
+		@include mq() {
+			width: 200px;
+			height: 60px;
+		}
+	}
+
+	.logo {
+		height: 100%;
+	}
+
+	.twitter {
+		width: 60px;
+		height: 100%;
+		background-image: url("../img/twitter.svg");
+		background-position: center;
+		display: block;
+		position: absolute;
+		right: 10px;
+		top: 0;
+	}
+}

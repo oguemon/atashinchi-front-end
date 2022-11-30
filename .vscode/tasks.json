@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compile with Webpack",
+        "type": "shell",
+        "command": "./node_modules/.bin/webpack --mode production",
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+        },
+        "isBackground": true
+      },
+      {
+        "label": "Build Server",
+        "type": "shell",
+        "command": "./node_modules/.bin/webpack-dev-server --mode development",
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+        },
+        "isBackground": true
+      }
+    ]
+  }

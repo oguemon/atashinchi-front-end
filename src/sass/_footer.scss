@@ -1,0 +1,46 @@
+/*
+ *  フッター
+ */
+
+footer {
+	width: 100%;
+	font-size: 12px;
+
+	@include mq() {
+		min-width: auto;
+	}
+
+	.wrapper-footer {
+		padding: 20px;
+	}
+
+	.copyright-attention {
+		padding: 30px 15px 0;
+
+		a {
+			color: $color-text-default;
+		}
+
+		p {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.oguemon-link {
+		margin: 15px 0;
+		text-align: center;
+
+		a {
+			color: $color-text-default;
+		}
+	}
+
+	.copyright {
+		margin: 10px;
+		text-align: center;
+	}
+}

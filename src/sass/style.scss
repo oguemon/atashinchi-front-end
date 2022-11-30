@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+// 変数などの宣言
+@import "define";
+
+// 全般的なレイアウト
+@import "general";
+
+// ヘッダー
+@import "header";
+
+// フッター
+@import "footer";
+
+// フォーム
+@import "form";
+
+// キャラクター
+@import "character";
+
+// 結果フォーム
+@import "result";
+
+// エピソード情報
+@import "article";

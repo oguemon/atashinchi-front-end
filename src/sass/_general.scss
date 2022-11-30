@@ -1,0 +1,142 @@
+/*
+ * 全般的なレイアウト
+ */
+* {
+	margin: 0;
+	padding: 0;
+
+	-webkit-appearance: none;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+	overscroll-behavior: none;
+
+	&:focus {
+		outline-color: $color-outline-focus;
+	}
+}
+
+body {
+	line-height: 1.6;
+	font-size: 14px;
+    font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: $color-text-default;
+	background: $color-bg-white;
+
+	@include mq() {
+		font-size: 13px;
+  }
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 200%;
+}
+
+a {
+	color: $color-main;
+	text-decoration: underline;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+li {
+	list-style-type: none;
+}
+
+.wrapper {
+	width: $wrapper-width;
+	margin: 0 auto;
+	position: relative;
+
+	@include mq() {
+		width: 100%;
+	}
+}
+
+.clearfix {
+	&:before, &:after {
+		clear: both;
+		content: "";
+		display: block;
+	}
+}
+
+.content-wrapper {
+	position: relative;
+
+    @include mq () {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.attention-box {
+    margin: 20px 0 10px;
+    padding: 15px 20px;
+    line-height: 2;
+    background-color: $color-bg-off-white;
+    border-radius: $size-border-radius;
+
+    p {
+        margin-bottom: 10px;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+.search-btn {
+	width: 200px;
+	padding: 10px;
+	color: $color-font-white;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background: $color-main;
+	border-radius: $size-border-radius;
+	display: block;
+    position: absolute;
+    top: 1px;
+    right: 0;
+	transition: background-color $time-hover-action ease-in-out, box-shadow $time-hover-action ease-in-out;
+
+	&:hover {
+		background: $color-main-light;
+		box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+	}
+
+	img {
+		width: 15px;
+		margin: 0 5px -2px 0;
+		display: inline-block;
+	}
+
+	@include mq() {
+		width: 140px;
+	}
+
+	@include mqn() {
+		width: 40px;
+
+		img {
+			width: 20px;
+			margin: 0;
+			display: block;
+			top: 0;
+		}
+
+		span {
+			display: none;
+		}
+	}
+}
