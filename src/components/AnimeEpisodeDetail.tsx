@@ -1,39 +1,23 @@
 import DOMPurify from 'dompurify';
 import { marked, Renderer } from "marked";
-import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from 'next/router';
 import { FC, memo } from "react";
 import { characters } from "../define/Characters"
-import { top_page_title, top_page_url } from "../define/Links";
+import { top_page_url } from "../define/Links";
 import icon_facebook from "../img/social-icon-facebook.svg";
 import icon_line     from "../img/social-icon-line.svg";
 import icon_twitter  from "../img/social-icon-twitter.svg";
 import { formatDateJP } from "../util/Convert";
 import { OriginalComic } from "./AnimeEpisodeDetail/OriginalComic";
 import { OtherInfo } from "./AnimeEpisodeDetail/OtherInfo";
-import { OGP } from "./OGP";
 
 type Props = {
+    share_title: string
+    share_url: string
     episode: EpisodeInfo
 }
 
-const Content: FC<Props> = ({episode: props}) => {
-    const router = useRouter();
-
-    // ページタイトル・URLの作成
-    const page_title: string = props.title + "｜#" + props.id + "｜" + top_page_title;
-    const page_url: string = router.pathname;
-
-    // OGP要素を入れる
-    const OGP_info: OGPInfo = {
-        title: page_title,
-        url: page_url,
-    };
-    if (props.outline !== "") {
-        OGP_info.description = props.outline;
-    }
-
+const Content: FC<Props> = ({share_title, share_url, episode: props}) => {
     // Youtubeがあれば入れる
     let youtube;
     if (props.detail!.youtube_id !== '')
@@ -48,9 +32,9 @@ const Content: FC<Props> = ({episode: props}) => {
     }
 
     // ソーシャルボタンのリンクを作る
-    const link_twitter: string = "http://twitter.com/share?text=" + encodeURIComponent(page_title) + "&url=" + encodeURIComponent(page_url) + "&related=oguemon_com";
-    const link_facebook: string = "https://www.facebook.com/dialog/feed?app_id=1846956072250071&link=" + encodeURIComponent(page_url);
-    const link_line: string = "http://line.me/R/msg/text/?" + encodeURIComponent(page_url);
+    const link_twitter: string = "http://twitter.com/share?text=" + encodeURIComponent(share_title) + "&url=" + encodeURIComponent(share_url) + "&related=oguemon_com";
+    const link_facebook: string = "https://www.facebook.com/dialog/feed?app_id=1846956072250071&link=" + encodeURIComponent(share_url);
+    const link_line: string = "http://line.me/R/msg/text/?" + encodeURIComponent(share_url);
 
     // あらすじがあれば入れる
     let outline;
@@ -167,10 +151,6 @@ const Content: FC<Props> = ({episode: props}) => {
 
     return (
         <>
-            <Head>
-                <title>{ page_title }</title>
-            </Head>
-            <OGP {...OGP_info} />
             <div className="wrapper">
                 <article className="episode-box">
                     <div className="header">
