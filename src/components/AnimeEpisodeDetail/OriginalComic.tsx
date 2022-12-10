@@ -29,7 +29,6 @@ const Content: FC<ComicInfo> = (props) => {
                         <a className="thum" href={ c.thum_link } rel="noreferrer" target="_blank">
                             <img src={ c.img } alt='公式ファンブック' />
                         </a>
-                        <img className="amzn-hidden-img" src={ c.img_hidden } alt='公式ファンブック' />
                         <div className="info">
                             <div className="title">公式ファンブック<br />No.{no}</div>
                             <div className="date">{ formatDateJP(date) }掲載</div>
@@ -47,7 +46,6 @@ const Content: FC<ComicInfo> = (props) => {
                         <a className="thum" href={ c.thum_link } rel="noreferrer" target="_blank">
                             <img src={ c.img } alt='単行本' />
                         </a>
-                        <img className="amzn-hidden-img" src={ c.img_hidden } alt='単行本' />
                         <div className="info">
                             <div className="title">{issue}巻 { (no === 0)? "特別編" : "No." + no }</div>
                             <div className="date">{ formatDateJP(date) }発売</div>
