@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { searchEpisodeById } from '../../../actions/EpisodesActions'
 import { AnimeEpisodeDetail } from '../../../components/AnimeEpisodeDetail'
-import { OGP } from '../../../components/OGP'
+import { HeadElements } from '../../../components/HeadElements'
 import { top_page_title } from '../../../define/Links'
 import { Layout } from '../../../layout/Layout'
+import { getFullURL } from '../../../util/getFullURL'
 
 type Prop = { episode: EpisodeInfo }
 
@@ -14,29 +14,23 @@ const Content: FC<Prop> = ({ episode }) => {
   const router = useRouter()
 
   // ページタイトル・URLの作成
-  const page_title: string =
-    episode.title + '｜#' + episode.id + '｜' + top_page_title
-  const page_url: string = router.pathname
-
-  // OGP要素を入れる
-  const OGP_info: OGPInfo = {
-    title: page_title,
-    url: page_url,
-  }
-  if (episode.outline !== '') {
-    OGP_info.description = episode.outline
-  }
+  const title = episode.title + '｜#' + episode.id + '｜' + top_page_title
+  const url = getFullURL(router.asPath)
 
   return (
     <>
-      <Head>
-        <title>{page_title}</title>
-      </Head>
-      <OGP {...OGP_info} />
+      <HeadElements
+        title={title}
+        description={
+          episode.outline ??
+          'アニメあたしンちのエピソードをひたすら紹介します。'
+        }
+        ogp={{ url }}
+      />
       <Layout>
         <AnimeEpisodeDetail
-          share_title={page_title}
-          share_url={page_url}
+          share_title={title}
+          share_url={url}
           episode={episode}
         />
       </Layout>

@@ -1,14 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import { Waypoint } from 'react-waypoint'
 import { searchEpisodeByCharacters } from '../../actions/EpisodesActions'
 import { EpisodeCard } from '../../components/EpisodeCard'
-import { OGP } from '../../components/OGP'
+import { HeadElements } from '../../components/HeadElements'
 import { characters, character_profiles } from '../../define/Characters'
 import { top_page_title } from '../../define/Links'
 import { Layout } from '../../layout/Layout'
+import { getFullURL } from '../../util/getFullURL'
 
 type Prop = {
   character: {
@@ -22,14 +22,8 @@ const Character: FC<Prop> = ({ character, episodes: initial_episodes }) => {
   const router = useRouter()
 
   // ページタイトル・URLの作成
-  const page_title: string = character.name + '｜' + top_page_title
-  const page_url: string = router.asPath
-
-  // OGP要素を入れる
-  const OGP_info: OGPInfo = {
-    title: page_title,
-    url: page_url,
-  }
+  const title = character.name + '｜' + top_page_title
+  const url = getFullURL(router.asPath)
 
   // 取得結果を蓄えるState
   const [episodes, setEpisodes] = useState<EpisodeInfo[]>(initial_episodes)
@@ -55,10 +49,11 @@ const Character: FC<Prop> = ({ character, episodes: initial_episodes }) => {
 
   return (
     <>
-      <Head>
-        <title>{page_title}</title>
-      </Head>
-      <OGP {...OGP_info} />
+      <HeadElements
+        title={title}
+        description='アニメあたしンちのエピソードをひたすら紹介します。'
+        ogp={{ url }}
+      />
       <Layout>
         <div className='character-profile'>
           <div className='wrapper'>
