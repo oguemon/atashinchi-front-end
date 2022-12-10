@@ -15,14 +15,18 @@ type Props = {
 }
 
 const Content: FC<Props> = ({share_title, share_url, episode: props}) => {
+    if (props.detail === undefined) {
+        return <></>
+    }
+
     // Youtubeがあれば入れる
     let youtube;
-    if (props.detail!.youtube_id !== '')
+    if (props.detail.youtube_id !== '')
     {
         youtube = <div className="youtube-frame-wrapper">
             <iframe
             className="youtube-frame"
-            src={"https://www.youtube.com/embed/" + props.detail!.youtube_id }
+            src={"https://www.youtube.com/embed/" + props.detail.youtube_id }
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
             </iframe>
         </div>;
@@ -64,12 +68,12 @@ const Content: FC<Props> = ({share_title, share_url, episode: props}) => {
 
     // ノートがあれば入れる
     let notes;
-    if (props.detail!.notes !== "") {
+    if (props.detail.notes !== "") {
         notes = (
             <div className="box">
                 <h2>Note</h2>
                 <div className="note" dangerouslySetInnerHTML={{
-                    __html: props.detail!.notes
+                    __html: props.detail.notes
                 }} />
             </div>
         );
@@ -77,9 +81,9 @@ const Content: FC<Props> = ({share_title, share_url, episode: props}) => {
 
     // 登場人物が登録されていたら入れる
     let character;
-    if (props.detail!.characters.length > 0)
+    if (props.detail.characters.length > 0)
     {
-        const character_tags = props.detail!.characters.map((character_id) => {
+        const character_tags = props.detail.characters.map((character_id) => {
             const character_jp: string = characters[character_id];
             return (<Link className="tag" key={ character_id } href={ "/character/" + character_id }>{ character_jp }</Link>);
         });
