@@ -1,9 +1,6 @@
-import DOMPurify from 'dompurify';
-import { marked, Renderer } from "marked";
 import Link from "next/link";
 import { FC, memo } from "react";
 import { characters } from "../define/Characters"
-import { top_page_url } from "../define/Links";
 import icon_facebook from "../img/social-icon-facebook.svg";
 import icon_line     from "../img/social-icon-line.svg";
 import icon_twitter  from "../img/social-icon-twitter.svg";
@@ -68,39 +65,11 @@ const Content: FC<Props> = ({share_title, share_url, episode: props}) => {
     // ノートがあれば入れる
     let notes;
     if (props.detail!.notes !== "") {
-        // リンクの設定変更
-        const renderer = new Renderer()
-        renderer.link = (href: string, title: string, text: string) => {
-            const propaty_href = `href="${href}"`;
-            let propaty_title = "";
-            let propaty_target = "";
-
-            // titleが存在したら代入する
-            if (title !== null) {
-                propaty_title = `title="${title}"`;
-            }
-
-            // 自分のサイトで無ければtarget="_blank"を加える
-            if (href.indexOf("//") > -1 && href.indexOf(top_page_url) == -1) {
-                propaty_target = `target="_blank"`;
-            }
-
-            return `<a ${propaty_href} ${propaty_title} ${propaty_target}>${text}</a>`;
-        }
-
-        const html = marked(props.detail!.notes, { renderer })
-        
-        // なぜかサニタイズできないので一旦諦め
-        const sanitized_html = html
-        // const sanitized_html = DOMPurify.sanitize(html, {
-        //     ALLOWED_ATTR: ['class', 'href', 'target', 'title']
-        // })
-
         notes = (
             <div className="box">
                 <h2>Note</h2>
                 <div className="note" dangerouslySetInnerHTML={{
-                    __html: sanitized_html
+                    __html: props.detail!.notes
                 }} />
             </div>
         );

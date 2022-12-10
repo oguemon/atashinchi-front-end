@@ -7,6 +7,7 @@ import { HeadElements } from '../../../components/HeadElements'
 import { top_page_title } from '../../../define/Links'
 import { Layout } from '../../../layout/Layout'
 import { getFullURL } from '../../../util/getFullURL'
+import { renderMarkdown } from '../../../util/renderMarkdown'
 
 type Prop = { episode: EpisodeInfo }
 
@@ -68,6 +69,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     q.id,
     true,
   )
+
+  if (episode[0].detail) {
+    episode[0].detail.notes = renderMarkdown(episode[0].detail.notes)
+  }
 
   return {
     props: { episode: episode[0] },
