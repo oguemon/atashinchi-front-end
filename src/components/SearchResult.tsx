@@ -41,7 +41,12 @@ const Content: FC<Prop> = ({ query }) => {
 
     // エピソードの取得
     if (0 < next_offset && next_offset < 670) {
-      const to_add_episodes = await searchEpisodesByQuery(0, query, next_offset, false)
+      const to_add_episodes = await searchEpisodesByQuery(
+        0,
+        query,
+        next_offset,
+        false,
+      )
 
       // 既存のエピソードに追記する
       setEpisodeState((state) => {
@@ -56,8 +61,12 @@ const Content: FC<Prop> = ({ query }) => {
   let results = (
     <>
       <div className='attention-box'>
-        <p>&apos;02年〜&apos;09年のアニメ「あたしンち」のエピソードを検索できます。</p>
-        <p>&apos;15年、&apos;16年の「新あたしンち」は未対応です…(いつか対応したいです)</p>
+        <p>
+          &apos;02年〜&apos;09年のアニメ「あたしンち」のエピソードを検索できます。
+        </p>
+        <p>
+          &apos;15年、&apos;16年の「新あたしンち」は未対応です…(いつか対応したいです)
+        </p>
       </div>
     </>
   )

@@ -4,16 +4,16 @@
 
 // SPサイズのとき
 @mixin mq() {
-	@media screen and (max-width: 640px) {
-		@content;
-	}
+  @media screen and (max-width: 640px) {
+    @content;
+  }
 }
 
 // SPの横幅狭いもののとき
 @mixin mqn() {
-	@media screen and (max-width: 360px) {
-		@content;
-	}
+  @media screen and (max-width: 360px) {
+    @content;
+  }
 }
 
 // 色関係
@@ -47,14 +47,13 @@ $wrapper-width: 640px;
 $size-border-radius: 5px;
 
 // 時間
-$time-hover-action: .2s;
+$time-hover-action: 0.2s;
 
 // 色付きリンク
 %colored-link-text {
-	color: $color-main;
+  color: $color-main;
 
-	&:hover {
-		text-decoration: underline;
-	}
+  &:hover {
+    text-decoration: underline;
+  }
 }
-

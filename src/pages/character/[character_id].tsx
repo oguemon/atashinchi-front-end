@@ -34,7 +34,10 @@ const Character: FC<Prop> = ({ character, episodes: initial_episodes }) => {
 
     // エピソードの取得
     if (0 < next_offset && next_offset < 670) {
-      const to_add_episodes = await searchEpisodeByCharacters([character.id], next_offset)
+      const to_add_episodes = await searchEpisodeByCharacters(
+        [character.id],
+        next_offset,
+      )
 
       // 既存のエピソードに追記する
       setEpisodes((state) => {

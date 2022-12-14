@@ -1,80 +1,81 @@
 .notfound {
-    margin: 10px 0;
-    line-height: 2;
+  margin: 10px 0;
+  line-height: 2;
 }
 
 .episode-card {
-    margin: 15px 0;
-    padding: 15px;
-    border-radius: $size-border-radius;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    position: relative;
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: $size-border-radius;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
 
-    a.title {
-        margin-right: 10px;
-        color: $color-text-default;
-        font-size: 150%;
-        font-weight: bold;
-        text-decoration: underline;
+  a.title {
+    margin-right: 10px;
+    color: $color-text-default;
+    font-size: 150%;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .onair {
+    color: $color-text-light;
+    font-size: 90%;
+    display: inline-block;
+
+    @include mq() {
+      margin-top: 3px;
+      font-size: 100%;
+      display: block;
+    }
+  }
+
+  .outline {
+    margin-top: 10px;
+  }
+
+  .detail {
+    margin-top: 10px;
+
+    // prettier-ignore
+    .comic {
+      margin: 0 3px;
+      padding: 3px 6px;
+      color: #333;
+      font-size: 90%;
+      background-color: #e5e5e5;
+      border-radius: $size-border-radius;
+      display: inline-block;
+
+      &.issue1  { color: #333; background-color: #cfe41c; }
+      &.issue2  { color: #333; background-color: #acf4f0; }
+      &.issue3  { color: #333; background-color: #f7bdb9; }
+      &.issue4  { color: #333; background-color: #fcd806; }
+      &.issue5  { color: #fff; background-color: #f24500; }
+      &.issue6  { color: #fff; background-color: #319afd; }
+      &.issue7  { color: #fff; background-color: #7fbf33; }
+      &.issue8  { color: #fff; background-color: #ce28a3; }
+      &.issue9  { color: #333; background-color: #fded13; }
+      &.issue10 { color: #333; background-color: #f8edad; }
+      &.issue11 { color: #333; background-color: #b4f0a6; }
+      &.issue12 { color: #fff; background-color: #f43810; }
+      &.issue13 { color: #fff; background-color: #f8368f; }
+      &.issue14 { color: #fff; background-color: #45b3fe; }
+      &.fanbook { color: #fff; background-color: #ff993a; }
+
+      &:first-child {
+          margin-left: 0;
+      }
     }
 
-    .onair {
-        color: $color-text-light;
-        font-size: 90%;
-        display: inline-block;
-
-        @include mq () {
-            margin-top: 3px;
-            font-size: 100%;
-            display: block;
-        }
+    .work-id {
+      color: $color-text-most-light;
+      font-weight: bold;
+      font-size: 200%;
+      line-height: 1;
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
     }
-
-    .outline {
-        margin-top: 10px;
-    }
-
-    .detail {
-        margin-top: 10px;
-
-        .comic {
-            margin: 0 3px;
-            padding: 3px 6px;
-            color: #333;
-            font-size: 90%;
-            background-color: #e5e5e5;
-            border-radius: $size-border-radius;
-            display: inline-block;
-
-            &.issue1  { color: #333; background-color: #cfe41c; }
-            &.issue2  { color: #333; background-color: #acf4f0; }
-            &.issue3  { color: #333; background-color: #f7bdb9; }
-            &.issue4  { color: #333; background-color: #fcd806; }
-            &.issue5  { color: #fff; background-color: #f24500; }
-            &.issue6  { color: #fff; background-color: #319afd; }
-            &.issue7  { color: #fff; background-color: #7fbf33; }
-            &.issue8  { color: #fff; background-color: #ce28a3; }
-            &.issue9  { color: #333; background-color: #fded13; }
-            &.issue10 { color: #333; background-color: #f8edad; }
-            &.issue11 { color: #333; background-color: #b4f0a6; }
-            &.issue12 { color: #fff; background-color: #f43810; }
-            &.issue13 { color: #fff; background-color: #f8368f; }
-            &.issue14 { color: #fff; background-color: #45b3fe; }
-            &.fanbook { color: #fff; background-color: #ff993a; }
-
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-
-        .work-id {
-            color: $color-text-most-light;
-            font-weight: bold;
-            font-size: 200%;
-            line-height: 1;
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-        }
-    }
+  }
 }
