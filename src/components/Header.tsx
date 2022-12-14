@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC, memo } from "react";
 import { top_page_title, top_page_url } from "../define/Links";
 import logo_image from "../img/logo.svg";
@@ -9,9 +10,9 @@ const Content: FC = () => {
     return (
         <header>
             <div className="wrapper">
-                <a className="logo-wrapper" href="/atashinchi/">
+                <Link className="logo-wrapper" href="/">
                     <img className="logo" src={ logo_image.src } alt="タチバナ研" />
-                </a>
+                </Link>
                 <a className="twitter" href={ link_twitter } rel="noreferrer" target="_blank"></a>
             </div>
         </header>
