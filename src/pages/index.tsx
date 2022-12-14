@@ -39,7 +39,7 @@ export default Top
 
 // ページデータを生成
 export const getStaticProps: GetStaticProps<Prop> = async () => {
-  const episodes = await searchAllEpisodes('FETCH_ALL_EPISODES', 0)
+  const episodes = await searchAllEpisodes(0)
 
   return {
     props: {

@@ -63,12 +63,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   // 検索の実行
-  const episode = await searchEpisodeById(
-    'SEARCH_EPISODES',
-    q.series,
-    q.id,
-    true,
-  )
+  const episode = await searchEpisodeById(q.series, q.id, true)
 
   if (episode[0].detail) {
     episode[0].detail.notes = renderMarkdown(episode[0].detail.notes)

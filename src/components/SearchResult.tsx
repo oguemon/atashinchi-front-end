@@ -21,13 +21,7 @@ const Content: FC<Prop> = ({ query }) => {
 
   useEffect(() => {
     const setInitialSearchResult = async () => {
-      const initial_episodes = await searchEpisodesByQuery(
-        'SEARCH_EPISODES_NEXT',
-        0,
-        query,
-        0,
-        false,
-      )
+      const initial_episodes = await searchEpisodesByQuery(0, query, 0, false)
 
       // 既存のエピソードに追記する
       setEpisodeState({
@@ -47,13 +41,7 @@ const Content: FC<Prop> = ({ query }) => {
 
     // エピソードの取得
     if (0 < next_offset && next_offset < 670) {
-      const to_add_episodes = await searchEpisodesByQuery(
-        'SEARCH_EPISODES_NEXT',
-        0,
-        query,
-        next_offset,
-        false,
-      )
+      const to_add_episodes = await searchEpisodesByQuery(0, query, next_offset, false)
 
       // 既存のエピソードに追記する
       setEpisodeState((state) => {

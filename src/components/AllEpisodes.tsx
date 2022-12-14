@@ -19,10 +19,7 @@ const Content: FC<Props> = ({ episodes: initial_episodes }) => {
 
     // エピソードの取得
     if (next_offset < 670) {
-      const to_add_episodes = await searchAllEpisodes(
-        'FETCH_ALL_EPISODES',
-        next_offset,
-      )
+      const to_add_episodes = await searchAllEpisodes(next_offset)
 
       // 既存のエピソードに追記する
       setEpisodes((state) => {

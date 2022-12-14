@@ -1,4 +1,3 @@
-import type { DispatchTypeNames } from "../define/Enums";
 import { top_page_url } from "../define/Links";
 
 // リクエストJSONの形式
@@ -15,15 +14,13 @@ type EpisodeRequestJSON = {
 
 // クエリに応じてストーリーを検索する
 export const searchEpisodesByQuery = async (
-    dispatch_type: DispatchTypeNames,
     query_series: number,
     query_word: string,
     line_offset: number,
     want_detail: boolean,
 ) => {
     // ストーリーを検索する
-    return searchEpisodes(
-        {
+    return searchEpisodes({
         type: 'anime',
         query_series,
         query_id: 0,
@@ -32,14 +29,11 @@ export const searchEpisodesByQuery = async (
         line_offset,
         want_detail,
         want_note_for_edit: false,
-        },
-        dispatch_type,
-    )
+    })
 }
 
 // idに応じてストーリーを検索する
 export const searchEpisodeById = async (
-    dispatch_type: DispatchTypeNames,
     query_series: number,
     query_id: number,
     want_detail: boolean
@@ -54,12 +48,11 @@ export const searchEpisodeById = async (
         line_offset: 0,
         want_detail,
         want_note_for_edit: false,
-    }, dispatch_type);
+    });
 }
 
 // 指定した人物が登場するストーリーを検索する
 export const searchEpisodeByCharacters = async (
-    dispatch_type: DispatchTypeNames,
     characters: string[],
     line_offset: number
 ) => {
@@ -73,17 +66,15 @@ export const searchEpisodeByCharacters = async (
         line_offset,
         want_detail: false,
         want_note_for_edit: false,
-    }, dispatch_type);
+    });
 }
 
 // エピソードの全数取得
 export const searchAllEpisodes = (
-    dispatch_type: DispatchTypeNames,
     line_offset: number,
 ) => {
     // ストーリーを検索する
-    return searchEpisodes(
-        {
+    return searchEpisodes({
         type: 'anime',
         query_series: 0,
         query_id: 0,
@@ -92,13 +83,11 @@ export const searchAllEpisodes = (
         line_offset,
         want_detail: false,
         want_note_for_edit: false,
-        },
-        dispatch_type,
-    )
+    })
 }
 
 // ストーリーの検索処理
-const searchEpisodes = async(request_json: EpisodeRequestJSON, dispatch_type: DispatchTypeNames) => {
+const searchEpisodes = async(request_json: EpisodeRequestJSON) => {
     // APIと非同期通信
     const res = await fetch(top_page_url + "api/index.php", {
         method: "POST",

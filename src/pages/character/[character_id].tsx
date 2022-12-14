@@ -34,11 +34,7 @@ const Character: FC<Prop> = ({ character, episodes: initial_episodes }) => {
 
     // エピソードの取得
     if (0 < next_offset && next_offset < 670) {
-      const to_add_episodes = await searchEpisodeByCharacters(
-        'SEARCH_EPISODES',
-        [character.id],
-        next_offset,
-      )
+      const to_add_episodes = await searchEpisodeByCharacters([character.id], next_offset)
 
       // 既存のエピソードに追記する
       setEpisodes((state) => {
@@ -106,11 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     name: characters[character_id],
   }
 
-  const episodes = await searchEpisodeByCharacters(
-    'SEARCH_EPISODES',
-    [character_id],
-    0,
-  )
+  const episodes = await searchEpisodeByCharacters([character_id], 0)
 
   return {
     props: {
