@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FC, memo } from 'react'
 import { amzn_links } from '../../define/Links'
 import { formatDateJP } from '../../util/Convert'
@@ -39,7 +40,12 @@ const Content: FC<Props> = ({ comic }) => {
               rel='noreferrer'
               target='_blank'
             >
-              <img src={c.img} alt='公式ファンブック' />
+              <Image
+                width={100}
+                height={142}
+                src={c.img}
+                alt='公式ファンブック'
+              />
             </a>
             <div className='info'>
               <div className='title'>
@@ -72,7 +78,7 @@ const Content: FC<Props> = ({ comic }) => {
               rel='noreferrer'
               target='_blank'
             >
-              <img src={c.img} alt='単行本' />
+              <Image width={100} height={142} src={c.img} alt='単行本' />
             </a>
             <div className='info'>
               <div className='title'>

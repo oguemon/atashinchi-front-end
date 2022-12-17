@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState, memo, FC } from 'react'
 import { Waypoint } from 'react-waypoint'
@@ -41,7 +42,7 @@ const Content: FC<Props> = ({ episodes: initial_episodes }) => {
       <div className='content-wrapper'>
         <h2>エピソード一覧</h2>
         <Link className='search-btn' href='/search'>
-          <img src={search_icon.src} alt='検索' />
+          <Image src={search_icon.src} alt='検索' />
           <span>エピソード検索</span>
         </Link>
         {episode_cards}

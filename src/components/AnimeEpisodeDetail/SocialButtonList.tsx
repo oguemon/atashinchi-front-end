@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FC, memo } from 'react'
 import icon_facebook from '../../img/social-icon-facebook.svg'
 import icon_line from '../../img/social-icon-line.svg'
@@ -25,7 +26,12 @@ const Content: FC<Props> = ({ title, url }) => {
         rel='noreferrer'
         target='_blank'
       >
-        <img src={icon_twitter.src} alt='Twitter Icon' />
+        <Image
+          width={30}
+          height={30}
+          src={icon_twitter.src}
+          alt='Twitter Icon'
+        />
       </a>
       <a
         className='social-btn'
@@ -33,7 +39,12 @@ const Content: FC<Props> = ({ title, url }) => {
         rel='noreferrer'
         target='_blank'
       >
-        <img src={icon_facebook.src} alt='Facebook Icon' />
+        <Image
+          width={30}
+          height={30}
+          src={icon_facebook.src}
+          alt='Facebook Icon'
+        />
       </a>
       <a
         className='social-btn'
@@ -41,7 +52,7 @@ const Content: FC<Props> = ({ title, url }) => {
         rel='noreferrer'
         target='_blank'
       >
-        <img src={icon_line.src} alt='Line Icon' />
+        <Image width={30} height={30} src={icon_line.src} alt='Line Icon' />
       </a>
     </div>
   )
