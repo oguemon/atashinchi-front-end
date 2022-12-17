@@ -7,7 +7,7 @@ import { OtherInfo } from './OtherInfo'
 import { Outline } from './Outline'
 import { PageNavigation } from './PageNavigation'
 import { SocialButtonList } from './SocialButtonList'
-import { YouTube } from './YouTube'
+// import { YouTube } from './YouTube'
 
 type Props = {
   title: string
@@ -31,7 +31,7 @@ const Content: FC<Props> = ({ title, url, episode }) => {
             回放送）
           </div>
         </div>
-        <YouTube video_id={episode.detail.youtube_id} />
+        {/* <YouTube video_id={episode.detail.youtube_id} /> */}
         <SocialButtonList title={title} url={url} />
         <Outline text={episode.outline} />
         <OriginalComicList comics={episode.comic} />
