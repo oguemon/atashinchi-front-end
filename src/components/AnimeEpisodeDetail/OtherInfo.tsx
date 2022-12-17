@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { Layout } from './Layout'
 
 type Props = {
   episode: EpisodeInfo
@@ -51,7 +52,7 @@ const Content: FC<Props> = ({ episode }) => {
     )
 
   return (
-    <div className='box'>
+    <Layout>
       <h2>その他情報</h2>
       <table className='other-info'>
         <tbody>
@@ -85,7 +86,7 @@ const Content: FC<Props> = ({ episode }) => {
           </tr>
         </tbody>
       </table>
-    </div>
+    </Layout>
   )
 }
 

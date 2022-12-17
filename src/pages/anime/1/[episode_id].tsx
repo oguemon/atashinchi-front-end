@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { searchEpisodeById } from '../../../actions/EpisodesActions'
-import { AnimeEpisodeDetail } from '../../../components/AnimeEpisodeDetail'
+import { AnimeEpisodeDetail } from '../../../components/AnimeEpisodeDetail/AnimeEpisodeDetail'
 import { HeadElements } from '../../../components/HeadElements'
 import { top_page_title } from '../../../define/Links'
 import { Layout } from '../../../layout/Layout'
@@ -29,11 +29,7 @@ const Content: FC<Prop> = ({ episode }) => {
         ogp={{ url }}
       />
       <Layout>
-        <AnimeEpisodeDetail
-          share_title={title}
-          share_url={url}
-          episode={episode}
-        />
+        <AnimeEpisodeDetail title={title} url={url} episode={episode} />
       </Layout>
     </>
   )

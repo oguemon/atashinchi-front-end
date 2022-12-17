@@ -2,9 +2,13 @@ import { FC, memo } from 'react'
 import { amzn_links } from '../../define/Links'
 import { formatDateJP } from '../../util/Convert'
 
-const Content: FC<ComicInfo> = (props) => {
-  const { issue, no } = props
-  const date = new Date(props.date)
+type Props = {
+  comic: ComicInfo
+}
+
+const Content: FC<Props> = ({ comic }) => {
+  const { issue, no } = comic
+  const date = new Date(comic.date)
 
   switch (issue) {
     case 0: {
