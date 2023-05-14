@@ -1,5 +1,5 @@
-export const top_page_url = 'https://oguemon.com/atashinchi/'
-// export const top_page_url = 'https://oguemon.localhost/atashinchi/'
+export const top_page_url = 'https://atashinchi.oguemon.com/'
+export const api_host = 'https://api.atashinchi.oguemon.com/'
 export const top_page_title = 'あたしンちアニメ作品紹介｜タチバナ研'
 
 type Code = {

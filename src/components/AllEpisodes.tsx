@@ -42,7 +42,7 @@ const Content: FC<Props> = ({ episodes: initial_episodes }) => {
       <div className='content-wrapper'>
         <h2>エピソード一覧</h2>
         <Link className='search-btn' href='/search'>
-          <Image src={search_icon.src} alt='検索' />
+          <img src={search_icon.src} alt='検索' />
           <span>エピソード検索</span>
         </Link>
         {episode_cards}

@@ -1,4 +1,4 @@
-import { top_page_url } from '../define/Links'
+import { api_host } from '../define/Links'
 
 // リクエストJSONの形式
 type EpisodeRequestJSON = {
@@ -87,7 +87,7 @@ export const searchAllEpisodes = (line_offset: number) => {
 // ストーリーの検索処理
 const searchEpisodes = async (request_json: EpisodeRequestJSON) => {
   // APIと非同期通信
-  const res = await fetch(top_page_url + 'api/index.php', {
+  const res = await fetch(api_host + 'index.php', {
     method: 'POST',
     mode: 'cors',
     body: JSON.stringify(request_json),

@@ -2,7 +2,7 @@
   "name": "atashinchi",
   "version": "1.0.0",
   "description": "atashinchi comic vs. animeepisode.",
-  "homepage": "https://oguemon.com/atashinchi/",
+  "homepage": "https://atashinchi.oguemon.com/",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",

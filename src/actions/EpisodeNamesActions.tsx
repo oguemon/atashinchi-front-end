@@ -1,9 +1,9 @@
-import { top_page_url } from '../define/Links'
+import { api_host } from '../define/Links'
 
 // ストーリーの検索処理
 export const fetchEpisodeNames = async () => {
   // APIと非同期通信
-  const res = await fetch(top_page_url + 'api/episode_name.php', {
+  const res = await fetch(api_host + 'episode_name.php', {
     method: 'POST',
     body: JSON.stringify({ type: 'anime' }),
     headers: {
