@@ -1,5 +1,7 @@
 import DOMPurify from 'isomorphic-dompurify'
 import { marked, Renderer } from 'marked'
+import { gfmHeadingId } from 'marked-gfm-heading-id'
+import { mangle } from 'marked-mangle'
 import { top_page_url } from '../define/Links'
 
 // リンクの設定変更
@@ -15,6 +17,8 @@ renderer.link = (href: string, title: string, text: string) => {
 }
 
 export const renderMarkdown = (md: string) => {
+  marked.use(gfmHeadingId())
+  marked.use(mangle())
   const html = marked(md, { renderer })
   const sanitized_html = DOMPurify.sanitize(html, {
     ALLOWED_ATTR: ['class', 'href', 'target', 'title'],
