@@ -12,6 +12,32 @@ type EpisodeRequestJSON = {
   want_note_for_edit: boolean
 }
 
+// レスポンスJSONの形式
+type EpisodeResponseJSON = {
+  res_code: number
+  type: 'anime'
+  eqisodes: [
+    {
+      series: string
+      id: string
+      title: string
+      onair_date: string
+      onair_no: string
+      outline: string
+      video: { collection: string; volume: string }
+      comic: [{ issue: number; no: number; date: string }]
+      upd_date: string
+      detail: {
+        amzn_no: string
+        youtube_id: string
+        characters: string[]
+        related_episode: [] // 現時点では空配列しか入らない（response.phpの21行目より）
+        notes: string
+      }
+    },
+  ]
+}
+
 // クエリに応じてストーリーを検索する
 export const searchEpisodesByQuery = async (
   query_series: number,
@@ -95,25 +121,32 @@ const searchEpisodes = async (request_json: EpisodeRequestJSON) => {
       'Content-Type': 'application/json; charset=utf-8',
     },
   })
-  const json = await res.json()
+  const json = (await res.json()) as EpisodeResponseJSON
 
   // 取得結果を配列に格納
-  const fetched_episodes: EpisodeInfo[] = json.eqisodes.map((r: any) => {
+  const fetched_episodes: EpisodeInfo[] = json.eqisodes.map((r) => {
     const episode: EpisodeInfo = {
-      series: r.series,
-      id: r.id,
+      series: Number.parseInt(r.series, 10),
+      id: Number.parseInt(r.id, 10),
       title: r.title,
       onair_date: r.onair_date,
       onair_no: r.onair_no,
       outline: r.outline,
-      video: r.video,
-      comic: r.comic,
+      video: {
+        collection: Number.parseInt(r.video.collection, 10),
+        volume: Number.parseInt(r.video.volume, 10),
+      },
+      comic: r.comic.map((c) => ({
+        issue: c.issue,
+        no: c.no,
+        date: c.date,
+      })),
     }
     // 詳細情報の取得がオンなら取得する
     if (request_json.want_detail) {
       episode['detail'] = {
         notes: r.detail.notes,
-        amzn_no: r.detail.amzn_no,
+        amzn_no: Number.parseInt(r.detail.amzn_no, 10),
         youtube_id: r.detail.youtube_id,
         characters: r.detail.characters,
         related_episode: r.detail.related_episode,

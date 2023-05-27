@@ -9,10 +9,10 @@ const hankaku2Zenkaku = (str: string) => {
 // ({value, reason}) => string[]
 export const getSuggestions = (
   episode_names: string[],
-  input_data: any,
+  input: string,
 ): string[] => {
   // 前後の空白を削除
-  const trimed_query: string = input_data.value.trim()
+  const trimed_query: string = input.trim()
 
   // 半角全角変換（と波線、読点変換）でクエリを正規化
   const nomalized_query: string = hankaku2Zenkaku(trimed_query)

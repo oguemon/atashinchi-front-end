@@ -2,7 +2,7 @@ type EpisodeInfo = {
     series: number,
     id: number,
     title: string,
-    onair_date: Date,
+    onair_date: string, // 日付形式が求められる
     onair_no: string,
     outline: string,
     video: VideoInfo,
@@ -19,7 +19,7 @@ type EpisodeInfo = {
 type ComicInfo = {
     issue: number,
     no: number,
-    date: Date,
+    date: string, // 日付形式が求められる
 };
 
 type RelatedEpisode = {

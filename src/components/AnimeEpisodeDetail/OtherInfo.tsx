@@ -2,12 +2,19 @@ import { FC, memo } from 'react'
 import { Layout } from './Layout'
 
 type Props = {
-  episode: EpisodeInfo
+  episode_id: number
+  video_collection: number
+  video_volume: number
+  amzn_no: number
 }
 
-const Content: FC<Props> = ({ episode }) => {
+const Content: FC<Props> = ({
+  episode_id,
+  video_collection,
+  video_volume,
+  amzn_no,
+}) => {
   // Amazon Primeの話数とリンクを求める
-  const amzn_no = episode.detail!.amzn_no
   const amzn_url = 'https://www.amazon.co.jp/gp/video/detail/B00FZE8QOS/'
 
   const amzn_eqisode = amzn_no == 0 ? '未配信' : `第${amzn_no}話`
@@ -26,12 +33,12 @@ const Content: FC<Props> = ({ episode }) => {
     )
 
   // Abema TVの話数とリンクを求める
-  let abema_no = episode.detail!.amzn_no
+  let abema_no = amzn_no
   let abema_url = 'https://abema.tv/video/episode/35-34_s1_p' + String(abema_no)
 
-  if (episode.detail!.amzn_no <= 198) {
+  if (amzn_no <= 198) {
     // 198話以前は3エピソードで1話となり、URLも異なる
-    abema_no = Math.ceil(episode.detail!.amzn_no / 3)
+    abema_no = Math.ceil(amzn_no / 3)
     abema_url =
       'https://abema.tv/video/episode/35-9ktacxeimpu_s0_p' + String(abema_no)
   }
@@ -58,7 +65,7 @@ const Content: FC<Props> = ({ episode }) => {
         <tbody>
           <tr>
             <th>作品通番</th>
-            <td colSpan={2}>第{episode.id}話</td>
+            <td colSpan={2}>第{episode_id}話</td>
           </tr>
           <tr>
             <th>
@@ -81,7 +88,7 @@ const Content: FC<Props> = ({ episode }) => {
           <tr>
             <th>ビデオ</th>
             <td colSpan={2}>
-              第{episode.video.collection}集・Vol.{episode.video.volume}
+              第{video_collection}集・Vol.{video_volume}
             </td>
           </tr>
         </tbody>

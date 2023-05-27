@@ -37,7 +37,12 @@ const Content: FC<Props> = ({ title, url, episode }) => {
         <OriginalComicList comics={episode.comic} />
         <Note text={episode.detail.notes} />
         <Characters characters={episode.detail.characters} />
-        <OtherInfo episode={episode} />
+        <OtherInfo
+          episode_id={episode.id}
+          video_collection={episode.video.collection}
+          video_volume={episode.video.volume}
+          amzn_no={episode.detail.amzn_no}
+        />
         <PageNavigation series={episode.series} id={episode.id} />
         <div className='article-footer'>
           第{episode.id}話・{episode.title}

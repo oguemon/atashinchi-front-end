@@ -21,10 +21,10 @@ const Content: FC<Props> = ({ setQuery, episode_names }) => {
 
   // サジェストを呼び出す時に実行される関数
   const onSuggestionsFetchRequested: Autosuggest.SuggestionsFetchRequested = (
-    value,
+    request,
   ) => {
     // サジェスト結果であるstring[]をsetStateする
-    setSuggestions(getSuggestions(episode_names, value))
+    setSuggestions(getSuggestions(episode_names, request.value))
   }
 
   // サジェストをクリアする時に実行される関数
