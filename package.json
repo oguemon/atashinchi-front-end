@@ -15,7 +15,7 @@
   "author": "oguemon",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/dompurify": "3.0.2",
+    "@types/dompurify": "3.0.5",
     "@types/gtag.js": "0.0.12",
     "@types/marked": "5.0.0",
     "@types/node": "20.3.2",
