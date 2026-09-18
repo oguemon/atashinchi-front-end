@@ -1862,9 +1862,9 @@ marked-gfm-heading-id@^3.0.3:
     github-slugger "^2.0.0"
 
 marked-mangle@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/marked-mangle/-/marked-mangle-1.0.1.tgz#022486251cde50a08a23b9675b3a7096266d7c3f"
-  integrity sha512-ZmWErsTkfE78OFgrpry2XGh+lYNRePfGy7bGh20l4rWHsH+bciKth1IHQXO9B6Ov5dHmY0jAswvgDxtcxGcFQQ==
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/marked-mangle/-/marked-mangle-1.1.14.tgz#7dc32ab9c0629c35a3a659a423d7b3c4ca2f228c"
+  integrity sha512-Hv6l5ryJyC9sQreqFVrsstl/Bw9tQB05lcPLLJKW6e+LcSQj8vhMA/6edcOSh3umV5mK3uTcMrvvoCiAxVyy3g==
 
 marked@5.1.0:
   version "5.1.0"
